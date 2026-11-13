@@ -1,111 +1,93 @@
+@layer ui-sdk;
+@import "tailwindcss";
+
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  --canvas: #f7f7f8;
+  --surface: #ffffff;
+  --ink: #18181b;
+  --body: #3f3f46;
+  --muted: #6b6b75;
+  --line: #e4e4e7;
+  --line-soft: #f0f0f2;
+  --accent: #18181b;
+  --accent-strong: #000000;
+  --accent-soft: #f4f4f5;
+  --accent-ink: #18181b;
+  --event: #d9d9de;
+  --event-line: #9f9fa8;
+  --event-hover: #cacad0;
+  --danger: #09090b;
+  --now: #52525b;
+  --elevation: 0 1px 2px rgb(24 24 27 / 0.05);
+  --popover: 0 12px 32px -8px rgb(24 24 27 / 0.18), 0 2px 6px rgb(24 24 27 / 0.06);
+  --lift: 0 16px 32px -10px rgb(24 24 27 / 0.35), 0 4px 10px -2px rgb(24 24 27 / 0.12);
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
-
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
   color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
-
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-}
-
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
-}
-
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
+    --canvas: #111113;
+    --surface: #18181b;
+    --ink: #f4f4f5;
+    --body: #d4d4d8;
+    --muted: #a1a1aa;
+    --line: #2a2a2f;
+    --line-soft: #202024;
+    --accent: #f4f4f5;
+    --accent-strong: #ffffff;
+    --accent-soft: #27272a;
+    --accent-ink: #f4f4f5;
+    --event: #46464e;
+    --event-line: #7a7a84;
+    --event-hover: #55555e;
+    --danger: #fafafa;
+    --now: #a1a1aa;
+    --elevation: 0 1px 2px rgb(0 0 0 / 0.4);
+    --popover: 0 16px 40px -8px rgb(0 0 0 / 0.6), 0 0 0 1px rgb(255 255 255 / 0.04);
+    --lift: 0 18px 36px -10px rgb(0 0 0 / 0.75), 0 0 0 1px rgb(255 255 255 / 0.08);
   }
 }
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
+
+@theme inline {
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", system-ui, "Segoe UI", Roboto, sans-serif;
+
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-body: var(--body);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-line-soft: var(--line-soft);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-ink: var(--accent-ink);
+  --color-event: var(--event);
+  --color-event-line: var(--event-line);
+  --color-event-hover: var(--event-hover);
+  --color-danger: var(--danger);
+  --color-now: var(--now);
+
+  --shadow-soft: var(--elevation);
+  --shadow-popover: var(--popover);
+  --shadow-lift: var(--lift);
+
+  --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Hour lines plus fainter half-hour lines, sized by --hour on the calendar. */
+@utility hour-grid {
+  background-image:
+    linear-gradient(var(--color-line) 1px, transparent 1px),
+    linear-gradient(var(--color-line-soft) 1px, transparent 1px);
+  background-size:
+    100% var(--hour),
+    100% calc(var(--hour) / 2);
+}
+
+@layer base {
+  body {
+    @apply m-0 bg-canvas font-sans text-base/normal tracking-[0.005em] text-body antialiased;
   }
-}
-p {
-  margin: 0;
-}
-
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
-}
-
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
 }
